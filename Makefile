@@ -3,15 +3,19 @@ CXX=g++
 CXXFLAGS= -Wall -g -O2
 C
 XX_OPTS= -Wall -g -O2
+
 INSTALL=install
+
 
 
 PROG=mpu6500
 
 
+
 %.o: %.c                                                                         
 	
          $(CXX) $(CXXFLAGS) $(CXX_OPTS) $< -o $@ 
+
 
 
 
@@ -26,7 +30,9 @@ all: $(PROG).o
 		
                 libs/libSPIdev.a
 
+
 $(PROG).o: MotionSensor/libMotionSensor.a libs/libSPIdev.a
+
 
 
 MotionSensor/libMotionSensor.a:
@@ -34,14 +40,17 @@ MotionSensor/libMotionSensor.a:
            $(MAKE) -C MotionSensor/ 
 
 
+
 libs/libSPIdev.a:
 	
            $(MAKE) -C libs/SPIdev
 
 
+
 install1:
 	
        $(INSTALL) -m 755 $(PROG) $(DESTDIR)/usr/local/bin/
+
 
 
 clean:
